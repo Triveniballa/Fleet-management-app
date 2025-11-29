@@ -155,18 +155,16 @@
         let avail=document.getElementById("filter availability").value;
         let filtered=data.filter(item=>{
             let okCat=(cat==="All" || item.cat===cat);
-            let okAvail=avail==="All"  || item.available ===avail);
+            let okAvail=(avail === "All" || item.available === avail);
             return okCat && okAvail;
-        }
+        });
         render(filtered);
     }
-    document.getElementById("clearFilter).addEventListener("click",function()){
+    document.getElementById("clearFilter").addEventListener("click",function(){
     document.getElementById("filterCategory").value="All";
-    document.getElementById("filterAvailability).value="All";
+    document.getElementById("filterAvailability").value="All";
     render(data);
     });
-
-    
     
  </script>  
 </body>
