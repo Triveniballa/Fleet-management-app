@@ -8,8 +8,52 @@
         body{
             font-family: Arial;
         }
+        #navbar{
+            padding:15px;
+            background-color:white;
+            display:flex;
+            gap:20px;
+        }
         #navbar select, #navbar button{
             padding:8px;
+        }
+        #container{
+            display:flex;
+        }
+        #sidebar{
+            width:25%;
+            padding:20px;
+            border-right:2px solid #ccc;
+        }
+        #sidebar input ,#sidebar select, #sidebar button{
+            width:90%;
+            padding:20px;
+            margin:10px 0;
+        }
+        #sidebar button{
+            background:black;
+            color:white;
+            border:none;
+            cursor:pointer;
+        }
+        #main{
+            width:75%;
+            display:flex;
+            flex-wrap:wrap;
+            gap:20px;
+            padding:20px;
+        }
+        .card{
+            width:30%;
+            padding: 15px;
+            border:1px solid #333;
+            border-radius:6px;
+            box-shadow:2px 2px 6px #bbb; 
+        }
+        .card button{
+            padding:8px;
+            margin: 5px;
+            cursor:pointer;
         }
     </style>
 </head>
