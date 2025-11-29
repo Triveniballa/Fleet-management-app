@@ -58,6 +58,58 @@
     </style>
 </head>
 <body>
-    
+ <div id="navbar">
+    <select id="FilterCategory">
+        <option value="All">All</option>
+        <option>Auto</option>
+        <option>Car</option>
+        <option>Truck</option>
+        <option>Bus</option>
+    </select>
+    <select id="FilterAvailability">
+        <option value="All"></option>
+        <option value="Available">Available</option>
+         <option value="Unavailable">Unavailable</option>
+    </select>
+    <button id="ClearFilter">ClearFilter</button>
+ </div>
+ <div id="container">
+    <div id="sidebar"></div>
+    <h2>Add Fleet</h2>
+    <input id="regNo"type="text" placeholder="Reg No">
+    <select id="category">
+        <option>Auto</option>
+        <option>Car</option>
+        <option>Truck</option>
+        <option>Bus</option>
+    </select>
+    <input id="driver" type="text" placeholder="Driver Name">
+    <select id="Available">
+     <option value="Available">Available</option>  
+     <option value="Unavailable">Unavailable</option> 
+    </select>
+    <button id="addBtn">Add Fleet</button>
+ </div> 
+ <div id="main"></div>
+ <script>
+    let data=[];
+    let main=document.getElementById("main");
+    document.getElementById("addBtn").addEventListener("click",function(){
+        let reg=document.getElementById("regNo").value.trim();
+        let cat=document.getElementById("category").value;
+        let driver=document.getElementById("driver".value.trim());
+        let available=document.getElementById("available").value;
+         
+        if(!reg || !driver){
+            alert("Fields cannot be empty");
+            return;
+        }
+        let obj={reg,cat,driver,available};
+            data.push(obj);
+            render(data);
+            document.getElementById("regNo").value="";
+            document.getElementById("driver").value="";
+    });
+ </script>  
 </body>
 </html>
