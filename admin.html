@@ -110,6 +110,57 @@
             document.getElementById("regNo").value="";
             document.getElementById("driver").value="";
     });
+    function render (arr){
+        main.innerHTML="";
+        arr.forEach((ele,i) =>{
+            let card=document.createElement("div");
+            card.className="card";
+            card.innerHTML=`<img src="ttps://coding-platform.s3.amazonaws.com/dev/lms/tickets/5e80fcb6-3f8e-480c-945b-30a5359eb40e/JNmYjkVr3WOjsrbu.png">
+            <p><b>Reg No:</b>${ele.reg}</p>
+            <p><b>Category:</b>${ele.cat}</p>
+            <p><b>Driver:</b>${ele.driver}</p>
+            <p><b>Status:</b>${ele.available}</p>
+            `;
+            let upbtn=document.createElement("button");
+            upBtn.innerText="Update Driver";
+            upBtn.onclick=function(){
+                let newDriver=prompt("Enter new driver name");
+                if(!newDriver || newDriver.trim() === ""){
+                    alert("Driver name cannot be empty");
+                }else{
+                    ele.driver=newDriver;
+                    render(arr);
+                }
+            };
+            let availBtn=document.createElement("button");
+            availBtn.innerText="Change Availability";
+            availBtn.onclick=function(){
+                ele.available=ele.available ==="Available" ? "Unavailable":"Available";
+                render(arr);
+            };
+            let delBtn=document.createElement("button");
+            delBtn.innerText="Delete Vehicle";
+            if (confirm("Are you sure?")){
+                arr.splice(i,1);
+                render(arr);
+            }
+        });
+        card.append(upBtn, availBtn, delBtn);
+        main.append(card);
+    }
+    document.getElementById("filtercategory").addEventListener("change".applyFilters);
+    document.getElementById("filter availability").addEventListener("change".applyFilters);
+    function applyFilters(){
+        let cat=document.getElementById("filter category").value;
+        let avail=document.getElementById("filter availability").value;
+        let filtered=data.filter(item=>{
+            let okCat=(cat==="All" || item.cat===cat);
+            let okAvail=avail==="All"  || item.available ===avail);
+            return okCat && okAvail;
+        }
+        render(filtered);
+    }
+    
  </script>  
 </body>
 </html>
